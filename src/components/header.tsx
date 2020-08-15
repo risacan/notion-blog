@@ -3,6 +3,7 @@ import Head from 'next/head'
 import ExtLink from './ext-link'
 import { useRouter } from 'next/router'
 import styles from '../styles/header.module.css'
+import { existsGaId, GA_TRACKING_ID } from '../lib/gtag'
 
 const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Blog', page: '/' },
@@ -31,6 +32,26 @@ export default ({ titlePre = '' }) => {
         <meta name="twitter:site" content="@_risacan_" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={ogImageUrl} />
+        {/* Google Analytics */}
+        {existsGaId ? (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_TRACKING_ID}', {
+                    page_path: window.location.pathname,
+                  });`,
+              }}
+            />
+          </>
+        ) : null}
       </Head>
       <ul>
         {navItems.map(({ label, page, link }) => (
