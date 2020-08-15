@@ -59,8 +59,6 @@ export default ({ posts = [], preview }) => {
         </div>
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        {/* TODO: ブログ画面のタイトル */}
-        <h1>My Notion Blog5</h1>
         {posts.length === 0 && (
           <p className={blogStyles.noPosts}>There are no posts yet</p>
         )}

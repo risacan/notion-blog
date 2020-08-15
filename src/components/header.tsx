@@ -21,16 +21,14 @@ export default ({ titlePre = '' }) => {
   return (
     <header className={styles.header}>
       <Head>
-        {/* TODO: タブのタイトル部分 */}
-        <title>{titlePre ? `${titlePre} |` : ''} My Notion Blog1</title>
+        <title>{titlePre ? `${titlePre} |` : ''} blog.risacan.net</title>
         <meta
           name="description"
           content="An example Next.js site using Notion for the blog"
         />
-        {/* TODO: OGのタイトル部分 */}
-        <meta name="og:title" content="My Notion Blog2" />
+        <meta name="og:title" content="blog.risacan.net" />
         <meta property="og:image" content={ogImageUrl} />
-        <meta name="twitter:site" content="@_ijjk" />
+        <meta name="twitter:site" content="@_risacan_" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={ogImageUrl} />
       </Head>
